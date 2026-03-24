@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Angel George | Data Science Student</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #222;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      background: #fff;
+      border-bottom: 1px solid #eee;
+      padding: 1rem 3rem;
+      display: flex; justify-content: space-between; align-items: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+    .logo { font-size: 1.3rem; font-weight: 700; color: #1a73e8; }
+    .nav-links { list-style: none; display: flex; gap: 2rem; }
+    .nav-links a {
+      text-decoration: none; color: #444;
+      font-size: 0.88rem; font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #1a73e8; }
+
+    /* SECTIONS */
+    section { padding: 5rem 3rem; }
+
+    /* HERO */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+      padding-top: 6rem;
+      background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 60%);
+    }
+    .hero-inner { max-width: 700px; }
+    .hero-avatar {
+      width: 120px; height: 120px; border-radius: 50%;
+      background: linear-gradient(135deg, #1a73e8, #0d47a1);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; margin: 0 auto 1.5rem;
+      box-shadow: 0 8px 24px rgba(26,115,232,0.25);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: #e8f0fe; color: #1a73e8;
+      font-size: 0.78rem; font-weight: 600;
+      padding: 0.35rem 1rem; border-radius: 50px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .hero-name {
+      font-size: clamp(2.2rem, 5vw, 3.5rem);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 1rem; color: #111;
+    }
+    .hero-name span { color: #1a73e8; }
+    .hero-sub {
+      font-size: 1.05rem; color: #555; line-height: 1.8;
+      margin-bottom: 2rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      padding: 0.8rem 2rem; border-radius: 8px;
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none; transition: all 0.25s; display: inline-block;
+    }
+    .btn-blue { background: #1a73e8; color: #fff; border: 2px solid #1a73e8; }
+    .btn-blue:hover { background: #1558b0; border-color: #1558b0; transform: translateY(-2px); }
+    .btn-white { background: #fff; color: #1a73e8; border: 2px solid #1a73e8; }
+    .btn-white:hover { background: #e8f0fe; transform: translateY(-2px); }
+
+    /* DIVIDER */
+    .divider { height: 1px; background: #eee; margin: 0 3rem; }
+
+    /* SECTION HEADER */
+    .sec-label {
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #1a73e8; margin-bottom: 0.5rem;
+    }
+    .sec-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      font-weight: 700; color: #111; margin-bottom: 2.5rem;
+    }
+    .sec-title span { color: #1a73e8; }
+
+    /* ABOUT */
+    #about { background: #fff; }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
+      max-width: 960px;
+    }
+    .about-text { font-size: 0.97rem; line-height: 1.9; color: #444; }
+    .about-text p + p { margin-top: 1rem; }
+    .info-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+    .info-list li {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 0.92rem; color: #333; font-weight: 500;
+    }
+    .info-icon {
+      width: 38px; height: 38px; border-radius: 8px;
+      background: #e8f0fe; display: flex; align-items: center;
+      justify-content: center; font-size: 1rem; flex-shrink: 0;
+    }
+    .info-list a { color: #1a73e8; text-decoration: none; }
+    .info-list a:hover { text-decoration: underline; }
+
+    /* SKILLS */
+    #skills { background: #f8faff; }
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1.25rem; max-width: 860px;
+    }
+    .skill-pill {
+      background: #fff; border: 1.5px solid #dce8fb;
+      border-radius: 12px; padding: 1.2rem 1rem;
+      text-align: center; font-size: 0.88rem; font-weight: 600;
+      color: #333; transition: all 0.25s; cursor: default;
+    }
+    .skill-pill:hover {
+      border-color: #1a73e8; color: #1a73e8;
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(26,115,232,0.12);
+    }
+    .skill-pill .sk-icon { font-size: 1.6rem; margin-bottom: 0.5rem; display: block; }
+
+    /* EDUCATION */
+    #education { background: #fff; }
+    .edu-list { display: flex; flex-direction: column; gap: 1.25rem; max-width: 720px; }
+    .edu-card {
+      background: #fff; border: 1.5px solid #e8edf5;
+      border-left: 4px solid #1a73e8;
+      border-radius: 10px; padding: 1.5rem 1.75rem;
+      transition: box-shadow 0.2s;
+    }
+    .edu-card:hover { box-shadow: 0 6px 24px rgba(26,115,232,0.1); }
+    .edu-year { font-size: 0.75rem; font-weight: 700; color: #1a73e8; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .edu-degree { font-size: 1.05rem; font-weight: 700; color: #111; margin-bottom: 0.25rem; }
+    .edu-school { font-size: 0.88rem; color: #666; }
+
+    /* GOALS */
+    #goals { background: #f8faff; }
+    .goals-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.5rem; max-width: 960px;
+    }
+    .goal-card {
+      background: #fff; border: 1.5px solid #e4edfb;
+      border-radius: 14px; padding: 1.75rem 1.5rem;
+      transition: all 0.25s;
+    }
+    .goal-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(26,115,232,0.1);
+      border-color: #aac8f7;
+    }
+    .goal-icon { font-size: 2rem; margin-bottom: 0.9rem; display: block; }
+    .goal-title { font-size: 1rem; font-weight: 700; color: #111; margin-bottom: 0.5rem; }
+    .goal-desc { font-size: 0.85rem; color: #666; line-height: 1.7; }
+
+    /* CONTACT */
+    #contact { background: #fff; text-align: center; }
+    .contact-box {
+      max-width: 560px; margin: 0 auto;
+      background: #f0f7ff; border-radius: 16px;
+      padding: 3rem 2rem;
+      border: 1.5px solid #dce8fb;
+    }
+    .contact-box p { font-size: 0.97rem; color: #555; line-height: 1.8; margin-bottom: 2rem; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; align-items: center; }
+    .contact-link {
+      display: flex; align-items: center; gap: 0.75rem;
+      background: #fff; border: 1.5px solid #dce8fb;
+      padding: 0.8rem 1.75rem; border-radius: 50px;
+      color: #333; text-decoration: none;
+      font-size: 0.9rem; font-weight: 500;
+      transition: all 0.2s; width: fit-content;
+    }
+    .contact-link:hover { border-color: #1a73e8; color: #1a73e8; transform: translateY(-2px); box-shadow: 0 4px 16px rgba(26,115,232,0.1); }
+
+    /* FOOTER */
+    footer {
+      background: #111; color: rgba(255,255,255,0.4);
+      text-align: center; padding: 1.5rem;
+      font-size: 0.8rem;
+    }
+    footer span { color: #1a73e8; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 4rem 1.5rem; }
+      .divider { margin: 0 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">Angel George</div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#goals">Goals</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-inner">
+      <div class="hero-avatar">👩‍💻</div>
+      <div class="hero-tag">Data Science Student</div>
+      <h1 class="hero-name">Hi, I'm <span>Angel George</span></h1>
+      <p class="hero-sub">
+        A passionate MSc Data Science &amp; Bio AI student at Digital University Kerala,
+        on a mission to turn data into meaningful insights and build a smarter tomorrow.
+      </p>
+      <div class="hero-btns">
+        <a href="#about" class="btn btn-blue">About Me</a>
+        <a href="#contact" class="btn btn-white">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="sec-label">Who I am</p>
+    <h2 class="sec-title">About <span>Me</span></h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          Hello! I'm <strong>Angel George</strong>, a dedicated and curious MSc student specialising in
+          Data Science and Bio AI at Digital University Kerala, based in the beautiful city of
+          Thiruvananthapuram, capital of Kerala.
+        </p>
+        <p>
+          I have a strong passion for uncovering patterns hidden in data and applying them to
+          solve real-world problems. I'm actively learning <strong>Python</strong> and <strong>R</strong>
+          — two of the most powerful tools in the data science world — and I enjoy every step of the
+          learning journey.
+        </p>
+        <p>
+          Beyond numbers and code, I love playing chess, spending time with family and friends,
+          and engaging in thoughtful conversations. I believe that great data scientists are not
+          just technical experts — they are curious thinkers and good communicators.
+        </p>
+        <p>
+          My goal is to build a career at the intersection of <strong>data science</strong>,
+          <strong>artificial intelligence</strong>, and <strong>biology</strong> — contributing to
+          research and applications that can genuinely improve lives.
+        </p>
+      </div>
+      <ul class="info-list">
+        <li>
+          <div class="info-icon">👤</div>
+          <div><strong>Name:</strong><br>Angel George</div>
+        </li>
+        <li>
+          <div class="info-icon">🎓</div>
+          <div><strong>Degree:</strong><br>MSc Data Science &amp; Bio AI</div>
+        </li>
+        <li>
+          <div class="info-icon">🏫</div>
+          <div><strong>University:</strong><br>Digital University Kerala</div>
+        </li>
+        <li>
+          <div class="info-icon">📍</div>
+          <div><strong>Location:</strong><br>Thrissur, Kerala, India</div>
+        </li>
+        <li>
+          <div class="info-icon">✉️</div>
+          <div><strong>Email:</strong><br><a href="mailto:angelgmangalan@gmail.com">angelgmangalan@gmail.com</a></div>
+        </li>
+        <li>
+          <div class="info-icon">📞</div>
+          <div><strong>Phone:</strong><br><a href="tel:+917736963604">+91 7736963604</a></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="sec-label">What I know</p>
+    <h2 class="sec-title">My <span>Skills</span></h2>
+    <div class="skills-grid">
+      <div class="skill-pill"><span class="sk-icon">🐍</span>Python</div>
+      <div class="skill-pill"><span class="sk-icon">📊</span>R Language</div>
+      <div class="skill-pill"><span class="sk-icon">📈</span>Data Analysis</div>
+      <div class="skill-pill"><span class="sk-icon">☁️</span>Google Cloud</div>
+      <div class="skill-pill"><span class="sk-icon">🤖</span>Machine Learning</div>
+      <div class="skill-pill"><span class="sk-icon">🧬</span>Bio AI</div>
+      <div class="skill-pill"><span class="sk-icon">🗃️</span>SQL Basics</div>
+      <div class="skill-pill"><span class="sk-icon">📉</span>Data Visualisation</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="sec-label">Academic background</p>
+    <h2 class="sec-title">My <span>Education</span></h2>
+    <div class="edu-list">
+      <div class="edu-card">
+        <div class="edu-year">2024 — Present</div>
+        <div class="edu-degree">MSc Data Science &amp; Bio AI</div>
+        <div class="edu-school">Digital University Kerala · Thiruvananthapuram, Kerala</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">Completed</div>
+        <div class="edu-degree">Bachelor's Degree in Botany</div>
+        <div class="edu-school">Irinjalakuda, Kerala, India</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-year">School</div>
+        <div class="edu-degree">Higher Secondary Education</div>
+        <div class="edu-school">Thrissur, Kerala</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- GOALS -->
+  <section id="goals">
+    <p class="sec-label">Where I'm headed</p>
+    <h2 class="sec-title">My <span>Goals &amp; Interests</span></h2>
+    <div class="goals-grid">
+      <div class="goal-card">
+        <span class="goal-icon">🧠</span>
+        <div class="goal-title">Master Data Science</div>
+        <div class="goal-desc">Build deep expertise in Python, R, machine learning, and statistical analysis to solve complex, real-world problems.</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-icon">☁️</span>
+        <div class="goal-title">Google Cloud Certified</div>
+        <div class="goal-desc">Currently pursuing the Google Cloud Certificate to build cloud skills and work with scalable data infrastructure.</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-icon">🧬</span>
+        <div class="goal-title">Bio AI Research</div>
+        <div class="goal-desc">Explore the intersection of artificial intelligence and biology to contribute to healthcare and life science innovations.</div>
+      </div>
+      <div class="goal-card">
+        <span class="goal-icon">💼</span>
+        <div class="goal-title">Industry Ready</div>
+        <div class="goal-desc">Develop practical skills through projects, internships, and certifications to become a job-ready data science professional.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="sec-label">Get in touch</p>
+    <h2 class="sec-title">Contact <span>Me</span></h2>
+    <div class="contact-box">
+      <p>
+        I'm always open to connecting with fellow learners, researchers, and professionals.
+        Feel free to reach out — whether it's about data science, Bio AI, or just a friendly hello!
+      </p>
+      <div class="contact-links">
+        <a href="mailto:angelgmangalan@gmail.com" class="contact-link">
+          ✉️ angelgmangalan@gmail.com
+        </a>
+        <a href="tel:+917736963604" class="contact-link">
+          📞 +91 7736963604
+        </a>
+        <a href="https://www.digitaluniversity.ac/" target="_blank" class="contact-link">
+          🏫 Digital University Kerala
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <span>Angel George</span> · MSc Data Science &amp; Bio AI · Digital University Kerala</p>
+  </footer>
+
+</body>
+</html>
